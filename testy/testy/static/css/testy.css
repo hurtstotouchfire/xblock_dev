@@ -1,0 +1,9 @@
+/* CSS for TestyXBlock */
+
+.testy_block .count {
+    font-weight: bold;
+}
+
+.testy_block p {
+    cursor: pointer;
+}
