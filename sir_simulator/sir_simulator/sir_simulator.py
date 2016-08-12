@@ -9,22 +9,34 @@ from xblock.fragment import Fragment
 
 class SIRSimulatorXBlock(XBlock):
     """
-    TO-DO: document what your XBlock does.
+    Allows students to select parameters for an SIR model and describe the
+    resulting simulation.
     """
 
-    # Fields are defined on the class.  You can access them in your code as
-    # self.<fieldname>.
-
-    # TO-DO: delete count, and define your own fields.
-    count = Integer(
-        default=0, scope=Scope.user_state,
-        help="A simple counter, to show something happening",
+    # Learners are shown the max infected percent in each of their simulation
+    # runs. This number is a common metric for how debilitating an epidemic is
+    # so the student whose simulation produced the max_percent_infected would
+    # have created the "worst" epidemic.
+    max_percent_infected = Integer(
+        help="The largest infected percentage in all learner simulations.",
+        default=0, scope=Scope.user_state_summary
     )
 
-    def resource_string(self, path):
-        """Handy helper for getting resources from our kit."""
-        data = pkg_resources.resource_string(__name__, path)
-        return data.decode("utf8")
+    # SIR model parameters, can be chosen by learner
+    population = Integer( # this is S, in the model
+        default=50, scope=Scope.user_state,
+        help="The initial susceptible population.",
+    )
+    reproductive_rate = Float( # this is RO, in the model
+        default=1.4, scope=Scope.user_state,
+        help="The reproductive rate of the virus.",
+    )
+
+    # Description of simulation written by learner
+    simulation_description = String(
+        default='', scope=Scope.user_state,
+        help="The reproductive rate of the virus.",
+    )
 
     # TO-DO: change this view to display your data your own way.
     def student_view(self, context=None):
