@@ -1,3 +1,4 @@
+
 """Setup for sir_simulator XBlock."""
 
 import os
@@ -30,6 +31,7 @@ setup(
     ],
     install_requires=[
         'XBlock',
+        'xblock-utils',
     ],
     entry_points={
         'xblock.v1': [

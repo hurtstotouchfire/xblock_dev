@@ -1,5 +1,33 @@
-<div class="sir_simulator_block">
-<p>SIRSimulatorXBlock: count is now
-    <span class='count'>{self.count}</span> (click me to increment).
-</p>
+<div class="c-xblock-container">
+  <div>
+    <p class="c-preamble">{self.preamble}</p>
+  </div>
+  <div id="js-sir-simulaton-graph" class="c-graph">
+    <span class="c-graph__description">Graph of SIR Simulation.</span>
+  </div>
+  <form id="js-sir-form" class="c-form">
+<!-- TODO, add form action maybe? kind of prefer not to -->
+    <div class="c-form__subsection">
+      <label for="population">Population:</label>
+      <input type="text" id="population" name="population" value="{self.population}" />
+    </div>
+    <div class="c-form__subsection">
+      <label for="reproduction_num">Basic reproduction number:</label>
+      <input type="text" id="reproduction_num" name="reproduction_num" value="{self.reproduction_num}" />
+    </div>
+    <div class="c-form__subsection">
+      <input type="hidden" id="max_percent_infected" name="max_percent_infected" value="" />
+    </div>
+    <div class="c-form__subsection">
+      <button type="button" class="c-button  js-run-simulation">Run simulation</button>
+    </div>
+    <div class="c-form__subsection">
+      <p class="c-directions">{self.directions}</p>
+      <label for="simulation_description">Description:</label>
+      <textarea id="simulation_description" name="simulation_description"></textarea>
+    </div>
+    <div class="c-form__subsection">
+      <button type="submit" class="c-button">Submit</button>
+    </div>
+  </form>
 </div>
