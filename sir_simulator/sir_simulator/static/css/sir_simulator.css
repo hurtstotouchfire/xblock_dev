@@ -1,0 +1,9 @@
+/* CSS for SIRSimulatorXBlock */
+
+.sir_simulator_block .count {
+    font-weight: bold;
+}
+
+.sir_simulator_block p {
+    cursor: pointer;
+}
