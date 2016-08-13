@@ -23,11 +23,11 @@ class SIRSimulatorXBlock(XBlock):
     )
 
     # SIR model parameters, can be chosen by learner
-    population = Integer( # this is S, in the model
+    population = Integer( # this is S, in the SIR model
         default=50, scope=Scope.user_state,
         help="The initial susceptible population.",
     )
-    reproductive_rate = Float( # this is RO, in the model
+    reproductive_rate = Float( # this is RO, in the SIR model
         default=1.4, scope=Scope.user_state,
         help="The reproductive rate of the virus.",
     )
