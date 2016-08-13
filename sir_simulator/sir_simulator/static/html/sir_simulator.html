@@ -8,11 +8,14 @@
   <form id="js-sir-form" class="c-form"><!-- TODO, add form action maybe? kind of prefer not to -->
     <div class="c-form__subsection">
       <label for="population">Population:</label>
-      <input type="text" id="population" name="population" value="{self.population}" />
+      <input type="text" id="population" name="population" value="50" />
     </div>
     <div class="c-form__subsection">
       <label for="reproduction_num">Basic reproduction number:</label>
-      <input type="text" id="reproduction_num" name="reproduction_num" value="{self.reproduction_num}" />
+      <input type="text" id="reproduction_num" name="reproduction_num" value="1.2" />
+    </div>
+    <div class="c-form__subsection">
+      <button type="button">Re-run simulation</button>
     </div>
     <div class="c-form__subsection">
       <p class="js-description-preamble"><!-- TODO get this from instructor --></p>
