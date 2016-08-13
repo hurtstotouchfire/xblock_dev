@@ -27,15 +27,15 @@ class SIRSimulatorXBlock(XBlock):
         default=50, scope=Scope.user_state,
         help="The initial susceptible population.",
     )
-    reproductive_rate = Float( # this is RO, in the SIR model
+    reproduction_num = Float( # this is R0, in the SIR model, https://en.wikipedia.org/wiki/Basic_reproduction_number
         default=1.4, scope=Scope.user_state,
-        help="The reproductive rate of the virus.",
+        help="The basic reproduction number of the virus.",
     )
 
     # Description of simulation written by learner
     simulation_description = String(
         default='', scope=Scope.user_state,
-        help="The reproductive rate of the virus.",
+        help="A description of this outbreak simulation.",
     )
 
     # TO-DO: change this view to display your data your own way.
