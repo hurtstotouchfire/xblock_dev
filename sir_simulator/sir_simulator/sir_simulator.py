@@ -64,8 +64,8 @@ class SIRSimulatorXBlock(XBlock):
         self.count += 1
         return {"count": self.count}
 
-    # TO-DO: change this to create the scenarios you'd like to see in the
-    # workbench while developing your XBlock.
+    # TODO: consult Product on intended behavior of multiple xblocks on a page.
+    # then pay for all the technical decisions that assume only 1.
     @staticmethod
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
