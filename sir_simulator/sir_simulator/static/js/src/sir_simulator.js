@@ -65,9 +65,9 @@ function SIRSimulatorXBlock(runtime, element) {
             data: timeSeries
         }]
     });
-    }
-    
-    function runSimulation(population, rNum, callback){
+    };
+        
+    function runSimulation(population, rNum, callback) {
       // simulation parameters
     	var max_t = population;
     	var I = 1; // initial infected person
@@ -77,15 +77,15 @@ function SIRSimulatorXBlock(runtime, element) {
       // simulation helpers
       function infectionProbability(currentlyInfected) {
       	return 1.0 - Math.exp(-rNum*currentlyInfected/population);
-      }
+      };
       
       function newInfectionsPerTimePoint(p_inf) {
         var new_I = 0;
     	  for (i = 0; i < S; i++) {
-          if (Math.random() < p_inf) {new_I++;}
-    	  }
+          if (Math.random() < p_inf) { new_I++; };
+    	  };
         return new_I;
-      }
+      };
       
       // run simulation 
     	for (t = 1; t < max_t; t++) {
@@ -100,12 +100,22 @@ function SIRSimulatorXBlock(runtime, element) {
     	  S -= newlyInfected;
         // update infected count for next time step
     	  I = newlyInfected;
-    	}
+    	};
       
-      callback(timeSeries, 0.7 * population, 0.7 * population);
+      callback(timeSeries, 0.6 * population, 0.6 * population);
     };
-
-   runSimulation(10, 4, configureChart);
+    
+    function getReproductionNum() { 
+      Number($('#reproduction_num')[0].value); 
+    };
+    function getPopulation() {
+      Number($('#population')[0].value); 
+    };   
+    
+   // set up the page
+   var population = getPopulation();
+   var rNum = getReproductionNum();
+   runSimulation(50, 1.2, configureChart);
    
 });
 }
