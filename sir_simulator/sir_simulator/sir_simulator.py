@@ -6,7 +6,6 @@ from xblock.core import XBlock
 from xblock.fields import Scope, Integer, Float, String
 from xblock.fragment import Fragment
 
-
 class SIRSimulatorXBlock(XBlock):
     """
     Allows students to select parameters for an SIR model and describe the
@@ -51,8 +50,10 @@ class SIRSimulatorXBlock(XBlock):
         frag.initialize_js('SIRSimulatorXBlock')
         return frag
 
-    # TO-DO: change this handler to perform your own actions.  You may need more
-    # than one handler, or you may not need any handlers at all.
+    ############################################################################
+    # Endpoints
+    ############################################################################
+
     @XBlock.json_handler
     def submit_description(self, data, suffix=''):
         """
@@ -66,6 +67,15 @@ class SIRSimulatorXBlock(XBlock):
         # if it's bigger than what we currently have, overwrite
         # either way, return final max_percent_infected so we can tell learner about it
         return {}
+
+    ############################################################################
+    # Helpers and bookkeeping
+    ############################################################################
+
+    def resource_string(self, path):
+        """Handy helper for getting resources from our kit."""
+        data = pkg_resources.resource_string(__name__, path)
+        return data.decode("utf8")
 
     # TODO: consult Product on intended behavior of multiple xblocks on a page.
     # then pay for all the technical decisions that assume only 1.
