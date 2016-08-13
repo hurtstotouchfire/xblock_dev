@@ -47,6 +47,7 @@ class SIRSimulatorXBlock(XBlock):
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/sir_simulator.css"))
         frag.add_javascript(self.resource_string("static/js/src/sir_simulator.js"))
+        frag.add_javascript(self.resource_string("static/js/lib/highcharts-custombar-4.2.6.min.js"))
         frag.initialize_js('SIRSimulatorXBlock')
         return frag
 
