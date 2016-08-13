@@ -1,18 +1,26 @@
 /* Javascript for SIRSimulatorXBlock. */
 function SIRSimulatorXBlock(runtime, element) {
 
+    function formtoJSON(form) {
+        // Returns a nice flat object like {form-element-name: form-element-value}
+        // Make sure your form elements are uniquely named
+        var obj = {};
+        form.serializeArray().map(function(elem){obj[elem.name] = elem.value;});
+        return obj;
+    }
+
     function descriptionSubmitted(response) {
         
     }
 
     var handlerUrl = runtime.handlerUrl(element, 'submit_description');
 
-    $('#sir_form').on('submit', function(eventObject) {
+    $('#js-sir_form').on('submit', function(eventObject) {
         eventObject.preventDefault();
         $.ajax({
             type: "POST",
             url: handlerUrl,
-            data: $(this).serialize(), // TODO look at this output in console
+            data: formtoJSON($(this)),
             success: descriptionSubmitted
         });
     });
