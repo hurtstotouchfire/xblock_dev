@@ -1,18 +1,19 @@
 /* Javascript for SIRSimulatorXBlock. */
 function SIRSimulatorXBlock(runtime, element) {
 
-    function updateCount(result) {
-        $('.count', element).text(result.count);
+    function descriptionSubmitted(response) {
+        
     }
 
-    var handlerUrl = runtime.handlerUrl(element, 'increment_count');
+    var handlerUrl = runtime.handlerUrl(element, 'submit_description');
 
-    $('p', element).click(function(eventObject) {
+    $('#sir_form').on('submit', function(eventObject) {
+        eventObject.preventDefault();
         $.ajax({
             type: "POST",
             url: handlerUrl,
-            data: JSON.stringify({"hello": "world"}),
-            success: updateCount
+            data: $(this).serialize(), // TODO look at this output in console
+            success: descriptionSubmitted
         });
     });
 
@@ -23,7 +24,7 @@ function SIRSimulatorXBlock(runtime, element) {
         
         
         function configureChart(timeSeries) {
-  jQuery('#SIRSimulatonGraph').highcharts({
+  $('#js-sir-simulaton-graph').highcharts({
     chart: {
       type: 'column'
     },
