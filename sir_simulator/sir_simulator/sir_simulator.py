@@ -54,15 +54,18 @@ class SIRSimulatorXBlock(XBlock):
     # TO-DO: change this handler to perform your own actions.  You may need more
     # than one handler, or you may not need any handlers at all.
     @XBlock.json_handler
-    def increment_count(self, data, suffix=''):
+    def submit_description(self, data, suffix=''):
         """
-        An example handler, which increments the data.
+        Save the learner's simulation parameters and description
         """
-        # Just to show data coming in...
-        assert data['hello'] == 'world'
-
-        self.count += 1
-        return {"count": self.count}
+        # save population
+        # save reproductive rate
+        # save description
+        
+        # examine max_percent_infected (still need to calculate and return this)
+        # if it's bigger than what we currently have, overwrite
+        # either way, return final max_percent_infected so we can tell learner about it
+        return {}
 
     # TODO: consult Product on intended behavior of multiple xblocks on a page.
     # then pay for all the technical decisions that assume only 1.
