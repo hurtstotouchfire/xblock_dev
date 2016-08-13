@@ -26,7 +26,8 @@ class SIRSimulatorXBlock(XBlock):
         default=50, scope=Scope.user_state,
         help="The initial susceptible population.",
     )
-    reproduction_num = Float( # this is R0, in the SIR model, https://en.wikipedia.org/wiki/Basic_reproduction_number
+    reproduction_num = Float( # this is R0, in the SIR model,
+        # https://en.wikipedia.org/wiki/Basic_reproduction_number
         default=1.4, scope=Scope.user_state,
         help="The basic reproduction number of the virus.",
     )
@@ -46,8 +47,12 @@ class SIRSimulatorXBlock(XBlock):
         html = self.resource_string("static/html/sir_simulator.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/sir_simulator.css"))
-        frag.add_javascript(self.resource_string("static/js/src/sir_simulator.js"))
-        frag.add_javascript(self.resource_string("static/js/lib/highcharts-custombar-4.2.6.min.js"))
+        frag.add_javascript(self.resource_string(
+            "static/js/src/sir_simulator.js"
+        ))
+        frag.add_javascript(self.resource_string(
+            "static/js/lib/highcharts-custombar-4.2.6.min.js"
+        ))
         frag.initialize_js('SIRSimulatorXBlock')
         return frag
 
@@ -66,7 +71,8 @@ class SIRSimulatorXBlock(XBlock):
         
         # examine max_percent_infected (still need to calculate and return this)
         # if it's bigger than what we currently have, overwrite
-        # either way, return final max_percent_infected so we can tell learner about it
+        # either way, return final max_percent_infected so we can tell learner
+        # about it
         return {}
 
     ############################################################################
