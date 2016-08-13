@@ -1,5 +1,23 @@
-<div class="sir_simulator_block"><!-- TODO Is this a standard container name? -->
-  <div id="js-sir-simulaton-graph">
+<div class="sir_simulator_block c-xblock-container"><!-- TODO Is the xblock name a standard container name? -->
+  <div id="js-sir-simulaton-graph" class="c-graph">
     Graph of SIR Simulation.
   </div>
+  <div>
+    <p class="js-directions"><-- TODO get this from instructor --></p>
+  </div>
+  <form id="js-sir-form" class="c-form"><!-- TODO, add form action maybe? kind of prefer not to -->
+    <div class="c-form__subsection">
+        <label for="population">Population:</label>
+        <input type="text" id="population" name="population" />
+    </div>
+    <div class="c-form__subsection">
+        <label for="reproductive_rate">Reproductive rate:</label>
+        <input type="text" id="reproductive_rate" name="reproductive_rate" />
+    </div>
+    <div class="c-form__subsection">
+        <p class="js-description-preamble"><-- TODO get this from instructor --></p>
+        <label for="simulation_description">Description:</label>
+        <textarea id="simulation_description" name="simulation_description"></textarea>
+    </div>
+  </form>
 </div>
