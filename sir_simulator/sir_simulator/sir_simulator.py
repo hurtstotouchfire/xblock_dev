@@ -26,8 +26,7 @@ class SIRSimulatorXBlock(XBlock):
         default=50, scope=Scope.user_state,
         help="The initial susceptible population.",
     )
-    reproduction_num = Float( # this is R0, in the SIR model,
-        # https://en.wikipedia.org/wiki/Basic_reproduction_number
+    reproduction_num = Float( # this is R0, in the SIR model
         default=1.2, scope=Scope.user_state,
         help="The basic reproduction number of the virus.",
     )
