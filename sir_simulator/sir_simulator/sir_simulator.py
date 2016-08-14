@@ -63,16 +63,29 @@ class SIRSimulatorXBlock(XBlock):
     def simulation_description(self, data, suffix=''):
         """
         Save the learner's simulation parameters and description
+        Check if the max infected percentage is a new record
         """
+        response = {'status': 'ok'}
+        new_record_message = "Congratulations! That's the worst outbreak "\
+                             "in this class!"
+        current_record_message = "The worst outbreak in the class so far had "\
+            "a peak of %d%% infected! See if you can make your outbreak even "\
+            "worse." % self.max_percent_infected
+
         self.population = data['population']
         self.reproduction_num = data['reproduction_num']
         self.description = data['simulation_description']
-        
-        # examine max_percent_infected (still need to calculate and return this)
+
+        # examine max_percent_infected
         # if it's bigger than what we currently have, overwrite
-        # either way, return final max_percent_infected so we can tell learner
-        # about it
-        return {'status': 'ok'}
+        if int(data['max_percent_infected']) > self.max_percent_infected:
+            self.max_percent_infected = data['max_percent_infected']
+            response['max_percent_message'] = new_record_message
+        else:
+            response['max_percent_message'] = current_record_message
+        # either way, return message with final max_percent_infected so we
+        # can tell learner about it
+        return response
 
     ############################################################################
     # Helpers and bookkeeping
