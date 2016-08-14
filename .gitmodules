@@ -1,3 +1,6 @@
 [submodule "xblock-sdk"]
 	path = xblock-sdk
 	url = git@github.com:edx/xblock-sdk.git
+[submodule "xblock-utils"]
+	path = xblock-utils
+	url = git@github.com:edx/xblock-utils.git
