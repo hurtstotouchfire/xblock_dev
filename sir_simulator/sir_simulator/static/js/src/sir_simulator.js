@@ -30,8 +30,7 @@ function SIRSimulatorXBlock(runtime, element) {
         min: 0,
         max: yMax,
         title: {
-          text: 'Infected population',
-          align: 'high'
+          text: 'Infected population'
         },
         labels: {
           overflow: 'justify'
@@ -107,7 +106,12 @@ function SIRSimulatorXBlock(runtime, element) {
       if (I > max_I) { max_I = I;};
     };
     
-    chartCallback(timeSeries, 0.6 * population, 0.6 * population);
+    // With a very low R0 you can keep a flat, and potentially long,
+    // distribution of infections, but then it's more likely to die out.
+    var xMax = 0.5 * population;
+    // if R0 is limited to 10, it's difficult to infect even half the population
+    var yMax = 0.7 * population;
+    chartCallback(timeSeries, xMax, yMax);
     maxICallback(max_I);
   };
   
