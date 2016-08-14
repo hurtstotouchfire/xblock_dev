@@ -6,16 +6,18 @@ function SIRSimulatorXBlock(runtime, element) {
         // Make sure your form elements are uniquely named
         var obj = {};
         form.serializeArray().map(function(elem){obj[elem.name] = elem.value;});
+      console.log(handlerUrl);
+      console.log(obj);
         return obj;
     }
 
     function descriptionSubmitted(response) {
-        
+      console.log(response);
     }
 
-    var handlerUrl = runtime.handlerUrl(element, 'submit_description');
+    var handlerUrl = runtime.handlerUrl(element, 'simulation_description');
 
-    $('#js-sir_form').on('submit', function(eventObject) {
+    $('#js-sir-form').on('submit', function(eventObject) {
         eventObject.preventDefault();
         $.ajax({
             type: "POST",

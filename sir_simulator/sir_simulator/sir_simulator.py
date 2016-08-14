@@ -28,7 +28,7 @@ class SIRSimulatorXBlock(XBlock):
     )
     reproduction_num = Float( # this is R0, in the SIR model,
         # https://en.wikipedia.org/wiki/Basic_reproduction_number
-        default=1.4, scope=Scope.user_state,
+        default=1.2, scope=Scope.user_state,
         help="The basic reproduction number of the virus.",
     )
 
@@ -61,19 +61,19 @@ class SIRSimulatorXBlock(XBlock):
     ############################################################################
 
     @XBlock.json_handler
-    def submit_description(self, data, suffix=''):
+    def simulation_description(self, data, suffix=''):
         """
         Save the learner's simulation parameters and description
         """
-        # save population
-        # save reproductive rate
-        # save description
+        self.population = data['population']
+        self.reproduction_num = data['reproduction_num']
+        self.description = data['simulation_description']
         
         # examine max_percent_infected (still need to calculate and return this)
         # if it's bigger than what we currently have, overwrite
         # either way, return final max_percent_infected so we can tell learner
         # about it
-        return {}
+        return {'status': 'ok'}
 
     ############################################################################
     # Helpers and bookkeeping
@@ -90,14 +90,7 @@ class SIRSimulatorXBlock(XBlock):
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
         return [
-            ("SIRSimulatorXBlock",
-             """<sir_simulator/>
-             """),
-            ("Multiple SIRSimulatorXBlock",
-             """<vertical_demo>
-                <sir_simulator/>
-                <sir_simulator/>
-                <sir_simulator/>
-                </vertical_demo>
-             """),
+            ("simulation",
+             """<sir_simulator name='sir_simulator'/>
+             """)
         ]

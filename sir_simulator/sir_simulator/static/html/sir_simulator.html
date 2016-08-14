@@ -1,18 +1,20 @@
-<div class="sir_simulator_block c-xblock-container"><!-- TODO Is the xblock name a standard container name? -->
+<div class="sir_simulator_block c-xblock-container">
+<!-- TODO Is the xblock name a standard container name? -->
   <div id="js-sir-simulaton-graph" class="c-graph">
     Graph of SIR Simulation.
   </div>
   <div>
     <p class="js-directions"><!-- TODO get this from instructor --></p>
   </div>
-  <form id="js-sir-form" class="c-form"><!-- TODO, add form action maybe? kind of prefer not to -->
+  <form id="js-sir-form" class="c-form">
+<!-- TODO, add form action maybe? kind of prefer not to -->
     <div class="c-form__subsection">
       <label for="population">Population:</label>
-      <input type="text" id="population" name="population" value="50" />
+      <input type="text" id="population" name="population" value="{self.population}" />
     </div>
     <div class="c-form__subsection">
       <label for="reproduction_num">Basic reproduction number:</label>
-      <input type="text" id="reproduction_num" name="reproduction_num" value="1.2" />
+      <input type="text" id="reproduction_num" name="reproduction_num" value="{self.reproduction_num}" />
     </div>
     <div class="c-form__subsection">
       <button type="button">Re-run simulation</button>
@@ -23,7 +25,7 @@
       <textarea id="simulation_description" name="simulation_description"></textarea>
     </div>
     <div class="c-form__subsection">
-      <input type="submit" value="Submit form">
+      <button type="submit">Submit form</button>
     </div>
   </form>
 </div>
