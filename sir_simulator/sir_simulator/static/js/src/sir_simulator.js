@@ -106,6 +106,7 @@ function SIRSimulatorXBlock(runtime, element) {
       if (I > max_I) { max_I = I;};
     };
     
+    // TODO: make this instructor-configurable or somehow more predictable
     // With a very low R0 you can keep a flat, and potentially long,
     // distribution of infections, but then it's more likely to die out.
     var xMax = 0.5 * population;
