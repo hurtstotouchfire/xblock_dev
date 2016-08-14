@@ -23,3 +23,15 @@
 }
 
 .c-button {}
+
+/* Styling for graph */
+
+.c-graph {
+  display: block;
+  height: 350px; /* helps prevent gross page-redraws when the graph appears */
+  width: 100%;
+}
+.c-graph__description {
+  /* Exists primarily for screen readers. */
+  visibility: hidden;
+}

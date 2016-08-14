@@ -1,10 +1,9 @@
-<div class="sir_simulator_block c-xblock-container">
-<!-- TODO Is the xblock name a standard container name? -->
-  <div id="js-sir-simulaton-graph" class="c-graph">
-    Graph of SIR Simulation.
-  </div>
+<div class="c-xblock-container">
   <div>
-    <p class="js-directions"><!-- TODO get this from instructor --></p>
+    <p class="c-preamble">{self.preamble}</p>
+  </div>
+  <div id="js-sir-simulaton-graph" class="c-graph">
+    <span class="c-graph__description">Graph of SIR Simulation.</span>
   </div>
   <form id="js-sir-form" class="c-form">
 <!-- TODO, add form action maybe? kind of prefer not to -->
@@ -23,12 +22,12 @@
       <button type="button" class="c-button  js-run-simulation">Run simulation</button>
     </div>
     <div class="c-form__subsection">
-      <p class="js-description-preamble"><!-- TODO get this from instructor --></p>
+      <p class="c-directions">{self.directions}</p>
       <label for="simulation_description">Description:</label>
       <textarea id="simulation_description" name="simulation_description"></textarea>
     </div>
     <div class="c-form__subsection">
-      <button type="submit" class="c-button">Submit form</button>
+      <button type="submit" class="c-button">Submit</button>
     </div>
   </form>
 </div>
