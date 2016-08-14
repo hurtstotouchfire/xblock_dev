@@ -1,9 +1,12 @@
 /* CSS for SIRSimulatorXBlock */
 
-.sir_simulator_block .count {
-    font-weight: bold;
+.c-form__subsection input, .c-form__subsection textarea {
+  box-sizing: border-box;
+  padding: 3px;
+  border-radius: 3px;
+  border: 1px solid #eee;
 }
 
-.sir_simulator_block p {
-    cursor: pointer;
+.c-form__subsection label {
+  font-weight: bold;
 }
