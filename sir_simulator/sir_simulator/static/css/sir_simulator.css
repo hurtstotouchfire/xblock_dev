@@ -1,12 +1,25 @@
 /* CSS for SIRSimulatorXBlock */
 
+/* Spacing */
+.c-form__subsection { padding: 8px 0; }
+.c-xblock-container { padding: 16px 0; }
+
+/* Styling for form */
 .c-form__subsection input, .c-form__subsection textarea {
-  box-sizing: border-box;
   padding: 3px;
-  border-radius: 3px;
-  border: 1px solid #eee;
+  border-radius: 2px;
+  border: 1px solid #aaa;
 }
+
+.c-form__subsection textarea {
+  display: block;
+  width: 100%;
+}
+
+.c-form__subsection input { width: 40px; }
 
 .c-form__subsection label {
   font-weight: bold;
 }
+
+.c-button {}
