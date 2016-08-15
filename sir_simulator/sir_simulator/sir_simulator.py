@@ -18,7 +18,6 @@ class SIRSimulatorXBlock(StudioEditableXBlockMixin, XBlock):
     # Fields
     ############################################################################
 
-    display_name = 'SIR Simulation'
     editable_fields = ('preamble', 'directions')
 
     # Learner-generated fields
