@@ -1,37 +1,32 @@
-import unittest
-
 from mock import Mock
 
-from xblock.test.tools import TestRuntime
-from xblock.runtime import KvsFieldData, DictKeyValueStore
+from xblock.runtime import Runtime
+from xblock.test.tools import (
+    assert_equals, assert_raises, assert_raises_regexp,
+    assert_not_equals, assert_false,
+    WarningTestMixin, TestRuntime,
+)
+from xblock.fields import Dict, Float, Integer, List, Set, Field, Scope, ScopeIds
+from xblock.field_data import FieldData, DictFieldData
 
+
+from workbench.runtime import WorkbenchRuntime
+from xblock.fields import ScopeIds
+from xblock.runtime import KvsFieldData, DictKeyValueStore
 from sir_simulator.sir_simulator import SIRSimulatorXBlock
 
-class TestStringMethods(unittest.TestCase):
+def make_block():
+    """ Instantiate a DragAndDropBlock XBlock inside a WorkbenchRuntime """
+    block_type = 'drag_and_drop_v2'
+    key_store = DictKeyValueStore()
+    field_data = KvsFieldData(key_store)
+    runtime = WorkbenchRuntime()
+    def_id = runtime.id_generator.create_definition(block_type)
+    usage_id = runtime.id_generator.create_usage(def_id)
+    scope_ids = ScopeIds('user', block_type, def_id, usage_id)
+    return SIRSimulatorXBlock(runtime, field_data, scope_ids=scope_ids)
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
-
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
-
-class SIRSimulatorXBlock(unittest.TestCase):
-
-    def test_default_values_of_fields(self):
-        key_store = DictKeyValueStore()
-        field_data = KvsFieldData(key_store)
-        runtime = TestRuntime(services={'field-data': field_data})
-        test_xblock = SIRSimulatorXBlock(runtime)
+def test_default_values_of_fields():
+    test_xblock = make_block()
         
-        assertEqual(test_xblock.description, '')
-
-if __name__ == '__main__':
-    unittest.main()
+    assert_equals(test_xblock.population, 50)
