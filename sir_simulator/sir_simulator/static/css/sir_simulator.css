@@ -1,0 +1,37 @@
+/* CSS for SIRSimulatorXBlock */
+
+/* Spacing */
+.c-form__subsection { padding: 8px 0; }
+.c-xblock-container { padding: 16px 0; }
+
+/* Styling for form */
+.c-form__subsection input, .c-form__subsection textarea {
+  padding: 3px;
+  border-radius: 2px;
+  border: 1px solid #aaa;
+}
+
+.c-form__subsection textarea {
+  display: block;
+  width: 100%;
+}
+
+.c-form__subsection input { width: 40px; }
+
+.c-form__subsection label {
+  font-weight: bold;
+}
+
+.c-button {}
+
+/* Styling for graph */
+
+.c-graph {
+  display: block;
+  height: 350px; /* helps prevent gross page-redraws when the graph appears */
+  width: 100%;
+}
+.c-graph__description {
+  /* Exists primarily for screen readers. */
+  visibility: hidden;
+}
