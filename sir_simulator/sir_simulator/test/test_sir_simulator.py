@@ -1,23 +1,28 @@
-from mock import Mock
-
-from xblock.runtime import Runtime
+# test assertion articulation tools
 from xblock.test.tools import (
-    assert_equals, assert_raises, assert_raises_regexp,
-    assert_not_equals, assert_false,
-    WarningTestMixin, TestRuntime,
+    assert_equals, assert_true,
+    assert_not_equals, assert_false
 )
-from xblock.fields import Dict, Float, Integer, List, Set, Field, Scope, ScopeIds
-from xblock.field_data import FieldData, DictFieldData
 
-
+# Code not under test that we will nonetheless exercise
 from workbench.runtime import WorkbenchRuntime
 from xblock.fields import ScopeIds
 from xblock.runtime import KvsFieldData, DictKeyValueStore
+
+# Code under test
 from sir_simulator.sir_simulator import SIRSimulatorXBlock
 
 def make_block():
-    """ Instantiate a DragAndDropBlock XBlock inside a WorkbenchRuntime """
-    block_type = 'drag_and_drop_v2'
+    # TODO: figure out if there are applications where I can exercise the
+    # class without a runtime, or if a little stubbing would get me there
+    key_store = DictKeyValueStore()
+    field_data = KvsFieldData(key_store)
+    return SIRSimulatorXBlock(None, field_data, None)
+    
+
+def make_block_with_runtime():
+    """ Instantiate a SIRSimulatorXBlock inside a WorkbenchRuntime """
+    block_type = ''
     key_store = DictKeyValueStore()
     field_data = KvsFieldData(key_store)
     runtime = WorkbenchRuntime()
@@ -27,7 +32,7 @@ def make_block():
     return SIRSimulatorXBlock(runtime, field_data, scope_ids=scope_ids)
 
 def test_default_values_of_model_parameters():
-    test_xblock = make_block()
+    test_xblock = make_block_with_runtime()
 
     assert_equals(test_xblock.population, 50)
     assert_equals(test_xblock.reproduction_num, 1.2)
@@ -37,7 +42,7 @@ def test_default_values_of_model_parameters():
     #assert_equals(test_xblock.simulation_description, '')
 
 def test_instructor_editable_fields():
-    test_xblock = make_block()
+    test_xblock = make_block_with_runtime()
 
     expected_editable_fields = ('preamble', 'directions')
     assert_equals(test_xblock.editable_fields, expected_editable_fields)
